@@ -14,14 +14,32 @@
 <script>
     var str = "border-bottom-color";
 
-    function test(str) {
-        str = str.toUpperCase();
-        return str;
-    }
-    alert( test(str) );
     /*
-    toUpperCase()----字母转化为大写
-     */
+      *字符串方法
+        function test(str) {
+            var arr = str.split("-");//[border,bottom,color]
+            for (var i = 1; i < arr.length; i++) {
+               arr[i] = arr[i].charAt(0).toUpperCase() + arr[i].substring(1);
+                //[border,Bottom,Color]
+            }
+    //        str = str.toUpperCase();
+            return arr.join("");
+        }
+        alert( test(str) );
+    */
+
+
+    function text(str) {
+        var re = /-(\w)/g;
+        return str.replace(re,function ($0,$1) {
+            return $1.toUpperCase();
+        })
+    }
+    alert( text(str) );
+
+/*
+toUpperCase()----字母转化为大写
+ */
 </script>
 </body>
 </html>
