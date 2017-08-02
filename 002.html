@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="Author" content="Fly">
+    <title>给数字加千分符</title>
+    <style>
+        *{ margin: 0; padding: 0; font-family:Microsoft yahei,serif;}
+        li{ list-style:none;}
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+    <script>
+        var str = '111fsfsd132234234221023';
+        //字符串方法 常规方法
+//        function test(str) {
+//            //-->0 1 2 如果是1截取1位，如果是2就截取2位 充当余数 通过余数来判断截取位数 3位一存
+//            var iNum = str.length%3;
+//            var pre = '',
+//                arr = [];
+//            if(iNum != 0){
+//                pre = str.substring(0,iNum);
+//                arr.push( pre );
+//            }
+//            //因为上面已经截取部分push了，下面就是需要对剩余部分进行截取，但str已经发生了变化，所以这里的str的长度就需要改变下
+//            str = str.substring(iNum);
+////            alert( str )
+//            var num = 0;
+//            var arr_a = [];
+//            for(var i=0;i<str.length;i++){
+//                num++;
+//                arr_a += str[i];
+//                if(num == 3 && arr_a){
+//                    arr.push( arr_a );
+//                    num =0;
+//                    arr_a = [];
+//                }
+//            }
+//            str = arr.join(',');
+//            return str;
+//        }
+        //正则方法
+        function test(str) {
+            var re = /(?=(?!\b)(\d{3})+$)/g;
+            return str.replace(re,',');
+
+        }
+        alert(test(str));
+
+        /*
+        (?=)  前向声明
+        (?!)  反前项声明
+         */
+        /*
+            var str = 'abacad';
+            //匹配到b但又不希望b出现到结果中（不希望b被替换掉）就需要用到前项声明
+            re_a = /a(?=b)/g;
+            re_b = /a(?!b)/g;
+            str = str.replace(re_b,'*');
+            alert( str );
+        */
+    </script>
+</body>
+</html>
