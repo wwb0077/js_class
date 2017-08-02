@@ -8,25 +8,42 @@
 <body>
     <div id="box"></div>
     <script>
-        var str = '我我我我w是谁圣诞节角度时间风控数据dsdsjksdjf ';
+        var str = 'sssssfjskdjfk';
+//        function test(str) {
+//            var obj = {};
+//            for(var i=0;i<str.length;i++){
+//                if( !obj[str[i]] ){
+//                    obj[str[i]]=[];
+//                }
+//                obj[str[i]].push(str[i]);
+//            }
+//            var num = 0,varlue = '';
+//            for (var key in obj) {
+//                if( num < obj[key].length ){
+//                    num = obj[key].length;
+//                    varlue = obj[key][0];
+//                }
+//            }
+//            return "最多的字符是："+varlue+"，最多的字符出现了"+num+"次";
+//        }
         function test(str) {
-            var obj = {};
+            var arr = str.split('');
+            arr.sort();
+            str = arr.join('');
+//            alert( str );
+            //\1代表跟前面的子项相同的意思，+可以出现多次，g:可以多次匹配
+            re = /(\w)\1+/g;
             var num = 0;
-            var value = '';
-            for (var i = 0; i < str.length; i++) {
-                if( !obj[str[i]] ){
-                    obj[ str[i] ] = [];
+            var varlue = 0;
+            str.replace(re,function ($1,$0) {
+                if(num < $1.length){
+                    num = $1.length;
+                    varlue = $0;
                 }
-                obj[ str[i]].push( str[i] );
-            }
-            for(var attr in obj){
-                if(num < obj[attr].length){
-                    num = obj[attr].length;
-                    value = obj[attr][0];
-                }
-            }
-            return '最多的字符是：' + value + ',出现了：' +num;
+            });
+            return "最多的字符是："+varlue+"，最多的字符出现了"+num+"次";
         }
+//        test(str);
         alert( test(str) );
 
     </script>
